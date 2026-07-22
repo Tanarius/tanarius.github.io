@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Treyten Ellingson — AI & Agent Engineer</title>
+<meta name="description" content="Infrastructure engineer who builds and ships production AI systems. Creator of Spotter (deployed AI agent) and Simmer (live full-stack AI app).">
+<meta property="og:title" content="Treyten Ellingson — AI & Agent Engineer">
+<meta property="og:description" content="I build and deploy AI agents that actually run in production. Self-taught, infrastructure background, portfolio of shipped work.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tanarius.github.io">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0f11;
+    --bg-raise:#12171a;
+    --bg-card:#151b1e;
+    --line:#232c30;
+    --line-bright:#31403f;
+    --ink:#e8ede9;
+    --ink-dim:#9aa8a2;
+    --ink-faint:#67766f;
+    --live:#4ade80;
+    --live-dim:#2f8f56;
+    --amber:#e8b04b;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --display:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:var(--body);font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 15% -5%, rgba(74,222,128,0.05), transparent 40%),
+      radial-gradient(circle at 90% 10%, rgba(232,176,75,0.03), transparent 35%);
+    background-attachment:fixed;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;scroll-behavior:auto}
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+
+  /* Top status bar */
+  .topbar{
+    border-bottom:1px solid var(--line);
+    font-family:var(--mono);font-size:12.5px;color:var(--ink-faint);
+    background:rgba(12,15,17,0.7);backdrop-filter:blur(8px);
+    position:sticky;top:0;z-index:20;
+  }
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:44px}
+  .topbar .id{color:var(--ink-dim);letter-spacing:0.02em}
+  .topbar .status{display:flex;align-items:center;gap:8px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--live);box-shadow:0 0 8px var(--live);animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
+
+  /* Hero */
+  .hero{padding:88px 0 64px}
+  .hero .eyebrow{font-family:var(--mono);font-size:13px;color:var(--live);letter-spacing:0.08em;margin-bottom:22px;text-transform:uppercase}
+  .hero h1{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(2.5rem,7vw,4.4rem);line-height:1.02;letter-spacing:-0.02em;margin-bottom:20px;
+  }
+  .hero h1 .arrow{color:var(--ink-faint);font-weight:400}
+  .hero .lead{font-size:clamp(1.05rem,2.2vw,1.28rem);color:var(--ink-dim);max-width:620px;line-height:1.55}
+  .hero .lead strong{color:var(--ink);font-weight:600}
+  .hero-cta{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+  .btn{
+    font-family:var(--mono);font-size:13.5px;font-weight:500;
+    padding:11px 20px;border-radius:7px;border:1px solid var(--line-bright);
+    color:var(--ink);transition:all .18s ease;display:inline-flex;align-items:center;gap:9px;
+  }
+  .btn:hover{border-color:var(--live-dim);background:var(--bg-raise);transform:translateY(-1px)}
+  .btn.primary{background:var(--live);color:#08110b;border-color:var(--live);font-weight:600}
+  .btn.primary:hover{background:#5eeb90;box-shadow:0 6px 20px rgba(74,222,128,0.2)}
+
+  /* Section framing */
+  section{padding:20px 0}
+  .sec-label{
+    font-family:var(--mono);font-size:12.5px;color:var(--ink-faint);
+    letter-spacing:0.1em;text-transform:uppercase;
+    display:flex;align-items:center;gap:14px;margin-bottom:34px;
+  }
+  .sec-label::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  /* Projects */
+  .projects{padding:40px 0 30px}
+  .proj{
+    border:1px solid var(--line);border-radius:12px;background:var(--bg-card);
+    padding:30px 30px 26px;margin-bottom:22px;transition:border-color .2s ease,transform .2s ease;
+    position:relative;overflow:hidden;
+  }
+  .proj:hover{border-color:var(--line-bright);transform:translateY(-2px)}
+  .proj-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  .proj-name{font-family:var(--display);font-size:1.55rem;font-weight:600;letter-spacing:-0.01em}
+  .proj-kind{font-family:var(--mono);font-size:12px;color:var(--ink-dim)}
+  .badge{
+    font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.05em;
+    padding:4px 10px;border-radius:20px;text-transform:uppercase;white-space:nowrap;
+  }
+  .badge.live{color:var(--live);border:1px solid var(--live-dim);background:rgba(74,222,128,0.07)}
+  .badge.demo{color:var(--amber);border:1px solid rgba(232,176,75,0.35);background:rgba(232,176,75,0.06)}
+  .proj-tag{font-family:var(--mono);font-size:12.5px;color:var(--ink-faint);margin-bottom:18px}
+  .proj-body{color:var(--ink-dim);font-size:0.98rem;line-height:1.62;margin-bottom:16px}
+  .proj-body .why{color:var(--ink);font-style:italic}
+  .proj-points{list-style:none;margin:16px 0 20px}
+  .proj-points li{position:relative;padding-left:22px;margin-bottom:9px;color:var(--ink-dim);font-size:0.95rem;line-height:1.55}
+  .proj-points li::before{content:"▸";position:absolute;left:0;color:var(--live-dim);font-size:0.85rem;top:1px}
+  .stack{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+  .stack span{font-family:var(--mono);font-size:11.5px;color:var(--ink-dim);border:1px solid var(--line);border-radius:5px;padding:4px 9px;background:var(--bg-raise)}
+  .proj-links{display:flex;gap:18px;font-family:var(--mono);font-size:13px}
+  .proj-links a{color:var(--live);display:inline-flex;align-items:center;gap:6px;transition:color .15s}
+  .proj-links a:hover{color:#7cf0a5}
+  .proj-links a .ext{color:var(--ink-faint);font-size:11px}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1fr;gap:26px}
+  .about p{color:var(--ink-dim);font-size:1.02rem;line-height:1.7;margin-bottom:16px;max-width:680px}
+  .about p strong{color:var(--ink);font-weight:600}
+  .about .kicker{font-family:var(--display);font-size:1.4rem;color:var(--ink);font-weight:600;margin-bottom:20px;letter-spacing:-0.01em;line-height:1.3;max-width:620px}
+
+  /* Skills */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .skill-cell{background:var(--bg-card);padding:22px 24px}
+  .skill-cell h4{font-family:var(--mono);font-size:12px;color:var(--live);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px}
+  .skill-cell p{color:var(--ink-dim);font-size:0.92rem;line-height:1.6}
+
+  /* Experience */
+  .xp{border-left:2px solid var(--line);padding-left:26px;margin-left:6px}
+  .xp-item{position:relative;padding-bottom:30px}
+  .xp-item::before{content:"";position:absolute;left:-33px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--line-bright)}
+  .xp-item.now::before{background:var(--live);border-color:var(--live);box-shadow:0 0 8px var(--live)}
+  .xp-role{font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--ink)}
+  .xp-meta{font-family:var(--mono);font-size:12.5px;color:var(--ink-faint);margin:3px 0 10px}
+  .xp-desc{color:var(--ink-dim);font-size:0.95rem;line-height:1.6;max-width:640px}
+
+  /* Contact */
+  .contact{padding:60px 0 30px}
+  .contact-box{border:1px solid var(--line);border-radius:14px;background:var(--bg-card);padding:44px 40px;text-align:center}
+  .contact-box h2{font-family:var(--display);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:14px}
+  .contact-box p{color:var(--ink-dim);max-width:460px;margin:0 auto 28px;line-height:1.6}
+  .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  /* Footer */
+  footer{border-top:1px solid var(--line);margin-top:70px;padding:26px 0}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  footer .fmono{font-family:var(--mono);font-size:12px;color:var(--ink-faint)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:560px){
+    .hero{padding:56px 0 44px}
+    .proj{padding:24px 22px}
+    .contact-box{padding:34px 24px}
+    .topbar .id{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="id">treyten_ellingson // ai_agent_engineer</span>
+    <span class="status"><span class="dot"></span> 2 systems live in production</span>
+  </div>
+</div>
+
+<header class="hero wrap">
+  <div class="eyebrow">AI &amp; Agent Engineer · Infrastructure Background</div>
+  <h1>I build AI systems<br>that actually run.</h1>
+  <p class="lead">Self-taught over the past year by building tools to solve real problems in my own life. I design, build, and <strong>deploy</strong> AI agents and full-stack products — and I bring a production-reliability mindset from years of infrastructure work. <strong>Not demos. Things that ship and run.</strong></p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn primary">View the work ↓</a>
+    <a href="https://github.com/Tanarius" class="btn" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:tanariustrey@gmail.com" class="btn">Get in touch</a>
+  </div>
+</header>
+
+<main>
+<section class="projects wrap" id="projects">
+  <div class="sec-label">Shipped work</div>
+
+  <!-- SPOTTER -->
+  <article class="proj reveal">
+    <div class="proj-head">
+      <div>
+        <span class="proj-name">Spotter</span>
+        <span class="proj-kind"> — personal AI agent</span>
+      </div>
+      <span class="badge live">● Live · in daily use</span>
+    </div>
+    <div class="proj-tag">A deployed AI agent that runs 24/7 and takes real actions</div>
+    <p class="proj-body">Built to externalize executive function: it captures tasks, surfaces the next concrete action when something feels too big to start, drafts messages I'm avoiding, and <span class="why">calls me out when I'm stalling on a project.</span> The motivation was personal — I built the tool I actually needed.</p>
+    <ul class="proj-points">
+      <li>Tool-using agent with the LLM acting as router across 8 tools — no separate intent classifier</li>
+      <li>Layered memory in SQLite: a lean always-injected context plus on-demand full-text retrieval to control token cost</li>
+      <li>Proactive scheduling engine — morning brief, evening check-in, and natural-language reminders, with catch-up so a restart never drops a message</li>
+      <li>Built for production: tool-loop iteration caps, graceful error handling, and a persistent-volume database so state survives restarts</li>
+    </ul>
+    <div class="stack"><span>Python</span><span>Anthropic API</span><span>SQLite</span><span>APScheduler</span><span>Railway</span></div>
+    <div class="proj-links">
+      <a href="https://github.com/Tanarius/spotter" target="_blank" rel="noopener">View repository <span class="ext">↗</span></a>
+    </div>
+  </article>
+
+  <!-- SIMMER -->
+  <article class="proj reveal">
+    <div class="proj-head">
+      <div>
+        <span class="proj-name">Simmer</span>
+        <span class="proj-kind"> — full-stack AI web app</span>
+      </div>
+      <span class="badge live">● Live in production</span>
+    </div>
+    <div class="proj-tag">A household-first meal-planning app my roommates and I use daily</div>
+    <p class="proj-body">A production web app that plans meals around a whole household's preferences. Started as a real problem — <span class="why">my roommates and I trying to manage food and cook for everyone's tastes together.</span></p>
+    <ul class="proj-points">
+      <li>Architected around household data isolation as a first-class model, enforced at the data layer with regression tests</li>
+      <li>Two-tier model routing: a lightweight model for high-volume recipe extraction, a stronger one for the conversational copilot — routing work by cost and capability</li>
+      <li>Full-stack build with third-party integrations (recipe sources, Stripe subscriptions, transactional email) and a hardened auth/security layer</li>
+    </ul>
+    <div class="stack"><span>React</span><span>TypeScript</span><span>Express</span><span>Drizzle</span><span>PostgreSQL / Neon</span><span>Stripe</span><span>Anthropic API</span></div>
+    <div class="proj-links">
+      <a href="https://simmer.kitchen" target="_blank" rel="noopener">Visit simmer.kitchen <span class="ext">↗</span></a>
+      <a href="https://github.com/Tanarius/simmer" target="_blank" rel="noopener">Repository <span class="ext">↗</span></a>
+    </div>
+  </article>
+
+  <!-- GLYPH -->
+  <article class="proj reveal">
+    <div class="proj-head">
+      <div>
+        <span class="proj-name">Glyph</span>
+        <span class="proj-kind"> — RAG &amp; vector-embedding pipeline</span>
+      </div>
+      <span class="badge demo">◆ Demo stage</span>
+    </div>
+    <div class="proj-tag">Where I got hands-on with embeddings, retrieval, and re-ranking</div>
+    <p class="proj-body">A retrieval pipeline built to surface meaningful connections across personal memories. The motivation was personal here too — <span class="why">I wanted to gather my family's memories and learn more about our history.</span></p>
+    <ul class="proj-points">
+      <li>Embeds unstructured content into a vector store (Pinecone) with metadata-scoped similarity search and dynamic top-k</li>
+      <li>Custom hybrid re-ranker on top of vector search — fuses similarity with entity and pattern overlap into explainable connections</li>
+      <li>A real judgment call: replaced a fragile initial scoring approach with a more robust hybrid method after testing revealed its limits</li>
+    </ul>
+    <div class="stack"><span>OpenAI Embeddings</span><span>Pinecone</span><span>n8n</span><span>MongoDB</span><span>Multi-model</span></div>
+    <div class="proj-links">
+      <a href="https://github.com/Tanarius" target="_blank" rel="noopener">More on GitHub <span class="ext">↗</span></a>
+    </div>
+  </article>
+</section>
+
+<section class="about wrap">
+  <div class="sec-label">How I got here</div>
+  <p class="kicker">Every project I've built started as a real problem in my own life — and each one taught me the next thing I needed to know.</p>
+  <p>About a year ago I was an infrastructure engineer, and I started using AI tools just to solve problems faster at work. It clicked quickly that I could <strong>build</strong> with them, not just ask questions. So I started building things I actually needed, and each project pulled me up the next rung: I hit the limits of one tool, so I learned web development; I needed things to run, so I learned to deploy them.</p>
+  <p>My learning is <strong>necessity-driven</strong> — I start with a real problem and learn whatever it takes to ship. That means I've learned exactly what shipping real things requires. And because I come from infrastructure, I think about reliability, error handling, and production behavior from the start — the AI systems I build work the same way.</p>
+</section>
+
+<section class="wrap" style="padding-top:44px">
+  <div class="sec-label">What I work with</div>
+  <div class="skills-grid">
+    <div class="skill-cell">
+      <h4>AI &amp; Agents</h4>
+      <p>Agent architecture &amp; tool use, Anthropic / Claude API, OpenAI API, RAG, vector databases (Pinecone), embeddings, prompt engineering</p>
+    </div>
+    <div class="skill-cell">
+      <h4>Languages</h4>
+      <p>Python, TypeScript / JavaScript, SQL</p>
+    </div>
+    <div class="skill-cell">
+      <h4>Web &amp; Data</h4>
+      <p>React, Vite, Express / Node, Drizzle ORM, PostgreSQL / Neon, SQLite</p>
+    </div>
+    <div class="skill-cell">
+      <h4>Infrastructure</h4>
+      <p>Railway, Render, deployment &amp; CI/CD, n8n workflow automation, endpoint &amp; network administration, Windows / Linux</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" style="padding-top:44px">
+  <div class="sec-label">Background</div>
+  <div class="xp">
+    <div class="xp-item now">
+      <div class="xp-role">Infrastructure Engineer</div>
+      <div class="xp-meta">RIATA Technologies · Jan 2024 — Present</div>
+      <div class="xp-desc">Infrastructure and endpoint support for a rotating base of 200–400 users across multiple client architectures — provisioning, identity &amp; access, network configuration, and on-site troubleshooting. The reliability discipline I build AI systems with comes from here.</div>
+    </div>
+    <div class="xp-item">
+      <div class="xp-role">System Administrator</div>
+      <div class="xp-meta">Wolff Logics · Jul 2021 — Jan 2024</div>
+      <div class="xp-desc">Foundational infrastructure work across Windows and Linux environments — system administration, troubleshooting, and user support.</div>
+    </div>
+    <div class="xp-item">
+      <div class="xp-role">Technical Recruiter</div>
+      <div class="xp-meta">Hire Velocity · Jul 2019 — Oct 2021</div>
+      <div class="xp-desc">Recruited technical talent across software and infrastructure roles — 500+ candidates, 50+ tech companies. I know how engineering teams evaluate and hire.</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact wrap" id="contact">
+  <div class="contact-box reveal">
+    <h2>Let's build something that runs.</h2>
+    <p>I'm looking for AI / agent engineering roles where I can own real work and ship it to production. Remote preferred, open to relocation for the right team.</p>
+    <div class="contact-links">
+      <a href="mailto:tanariustrey@gmail.com" class="btn primary">tanariustrey@gmail.com</a>
+      <a href="https://www.linkedin.com/in/treytenellingson" class="btn" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Tanarius" class="btn" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="fmono">treyten_ellingson</span>
+    <span class="fmono">built &amp; deployed by me · 2026</span>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
